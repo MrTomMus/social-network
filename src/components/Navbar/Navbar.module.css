@@ -1,0 +1,22 @@
+.nav{
+    grid-area: n;
+    background-color: greenyellow;
+  }
+
+  .item{
+    font-size: 1.5em;
+  }
+  .item a{
+      color: black;
+      margin-left: 10px;
+      margin-bottom: 10px;
+      text-decoration: none;
+  }
+
+  .item a.active{
+    color: blue;
+  }
+
+  .friends{
+    margin-top: 20px;
+  }

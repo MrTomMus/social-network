@@ -1,0 +1,8 @@
+.message .ava{
+    width: 5%;
+    border-radius: 50%;
+}
+
+.message{
+    text-align: right;
+}

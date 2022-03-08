@@ -1,0 +1,14 @@
+.dialog .active {
+    color: greenyellow;
+    font-size: 30px;  
+}
+
+.dialog .ava{
+    width: 20%;
+    border-radius: 50%;
+}
+
+.dialog{
+    border-right: solid greenyellow;
+}
+

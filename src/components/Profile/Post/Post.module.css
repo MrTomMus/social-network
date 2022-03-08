@@ -1,0 +1,10 @@
+.content .item{
+    margin-left: 10px;
+ }
+
+ .content .item img{
+    width: 50px;
+    border-radius: 50%;
+  }
+
+
