@@ -9,6 +9,8 @@ import {Route} from 'react-router-dom';
 import News from './components/News/News';
 import Settings from './components/Settings/Settings';
 import Friends from './components/Friends/Friends';
+import ProfileContainer from './components/Profile/Profile-container';
+import MessangerContainer from './components/Messanger/Messanger-container';
 
 
 const App = (props) => {
@@ -21,8 +23,8 @@ const App = (props) => {
           <Header />
           <Navbar store={props.store.messangerPage} />
           <div className={classes.content}>
-              <Route path='/profile' render={() => <Profile store={props.store} dispatch={props.dispatch}/>}/>
-              <Route path='/messanger' render={() => <Messanger store={props.store} dispatch={props.dispatch}/>}/>
+              <Route path='/profile' render={() => <ProfileContainer/>}/>
+              <Route path='/messanger' render={() => <MessangerContainer/>}/>
               <Route path='/music' component={Music}/>
               <Route path='/news' component={News}/>
               <Route path='/settings' component={Settings}/>

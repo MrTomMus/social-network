@@ -9,7 +9,7 @@ const FriendsNav = (props) => {
     let friendsNavItem = props.store.dialogsData.map((elem) => {
         if(elem.id<=3){
           return  ( 
-            <div className={classes.friendsNav}>
+            <div key={elem.id} className={classes.friendsNav}>
                 <div className={classes.block}>
                     <img src={elem.ava}/>
                 </div>

@@ -2,24 +2,24 @@ import React from 'react';
 import classes from './Profile.module.css';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
 import Post from './Post/Post';
-import { createAddPost, createUpdateNewPostText } from '../redux/profile-reducer'
+
 
 
 
 
 const Profile = (props) => {
-    
-    let postsData = props.store.profilePage.postData.map(elem => <Post message={elem.message} like={elem.like}/>)
+    console.log(props)
+    let postsData = props.profilePage.postData.map(elem => <Post key={elem.id} message={elem.message} like={elem.like}/>)
 
     let newPostElement = React.createRef() 
 
     let click = () => {
-        props.dispatch(createAddPost());
+        props.createAddPost();
     }
 
     let onChangeText = () => {
         let text = newPostElement.current.value;
-        props.dispatch(createUpdateNewPostText(text))
+        props.createUpdateNewPostText(text)
     }
     
     return (
@@ -31,7 +31,7 @@ const Profile = (props) => {
                 <ProfileInfo />
             </div>
             <div className={classes.addPost}>
-                <input onChange={onChangeText} ref={newPostElement} value={props.store.profilePage.newPostText}/>
+                <input onChange={onChangeText} ref={newPostElement} value={props.profilePage.newPostText}/>
                 <button onClick={click}>Add Post</button>
             </div>
             <div>
