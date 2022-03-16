@@ -4,9 +4,9 @@ import classes from './FriendsNav.module.css';
 
 
 const FriendsNav = (props) => {
-   
+   console.log(props)
 
-    let friendsNavItem = props.store.dialogsData.map((elem) => {
+    let friendsNavItem = props.dialogsData.map((elem) => {
         if(elem.id<=3){
           return  ( 
             <div key={elem.id} className={classes.friendsNav}>

@@ -4,9 +4,9 @@ import classes from './Friends.module.css';
 
 const Friends = (props) =>{
     
-    let friends = props.store.messangerPage.dialogsData.map((elem) => {
+    let friends = props.dialogsData.map((elem) => {
         return (
-        <div className={classes.friendItem}>
+        <div key={elem.id} className={classes.friendItem}>
             <img src={elem.ava}></img>
             <span>{elem.name}</span>
         </div>
