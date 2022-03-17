@@ -22,21 +22,22 @@ let inicialState = {
 const messangerReducer = (state = inicialState, action) => {
     switch(action.type){
         case ADD_MES_USER:{
-            let copyState = {...state}
             let newMessage = {
                 id: 2,
-                message: copyState.newMessageText,
+                message: state.newMessageText,
                 ava: 'https://www.kindpng.com/picc/m/495-4952535_create-digital-profile-icon-blue-user-profile-icon.png',
             }
-            copyState.messageDataUser.push(newMessage);
-            console.log('Привет')
-            copyState.newMessageText = '';
-            return copyState;
+            return {
+                ...state,
+                messageDataUser: [...state.messageDataUser, newMessage],
+                newMessageText: ''
+            }
         }    
         case UPDATE_NEW_MESSAGE_TEXT:{
-            let copyState = {...state}
-            copyState.newMessageText = action.newText;
-            return copyState;
+            return {
+                ...state,
+                newMessageText: action.newText
+            }
         }    
         default:
             return state;
