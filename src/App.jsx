@@ -9,6 +9,7 @@ import Settings from './components/Settings/Settings';
 import ProfileContainer from './components/Profile/Profile-container';
 import MessangerContainer from './components/Messanger/Messanger-container';
 import FriendsContainer from './components/Friends/Friends-container';
+import FindFriendsContainer from './components/Navbar/FindFriends-container';
 
 
 const App = (props) => {
@@ -27,6 +28,7 @@ const App = (props) => {
               <Route path='/news' component={News}/>
               <Route path='/settings' component={Settings}/>
               <Route path='/friends' render={() => <FriendsContainer/>}/>
+              <Route path='/find-friends' render={() => <FindFriendsContainer/>}/>
           </div>
         </div>
     

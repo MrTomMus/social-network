@@ -7,6 +7,7 @@ import FriendsNavContainer from './friendsNav/FriendsNav-container';
 
 
 
+
 const Navbar = () => {
     
     return (
@@ -29,6 +30,9 @@ const Navbar = () => {
             <div className={classes.item + ' ' +classes.friends}>
                 <NavLink to="/friends" activeClassName={classes.active}>Friends</NavLink>
                 <FriendsNavContainer/>
+            </div>
+            <div className={classes.item}>
+                <NavLink to="/find-friends" activeClassName={classes.active}>Find Friends</NavLink> 
             </div>
             
         </nav>
