@@ -2,8 +2,9 @@ import { connect } from "react-redux";
 import FindFriends from "./FindFriends";
 
 let mapStateToProps = (store) => {
+    console.log(store)
     return {
-        findFriends: store.users,
+        findFriends: store.findFriends.users,
         
     }
 }

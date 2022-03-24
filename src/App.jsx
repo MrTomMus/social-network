@@ -9,7 +9,7 @@ import Settings from './components/Settings/Settings';
 import ProfileContainer from './components/Profile/Profile-container';
 import MessangerContainer from './components/Messanger/Messanger-container';
 import FriendsContainer from './components/Friends/Friends-container';
-import FindFriendsContainer from './components/Navbar/FindFriends-container';
+import FindFriendsContainer from './components/Navbar/FindFriends/FindFriends-container';
 
 
 const App = (props) => {
