@@ -1,25 +1,39 @@
 import React from "react";
-import ItemFriends from "./ItemFriends/ItemFriends";
+import classes from './FindFriends.module.css';
+
 
 
 const FindFriends = (props) => {
-
-    console.log(props.findFriends)
+    console.log(props)
     
-    let newFriends = props.findFriends.map((elem) => <ItemFriends
-        id={elem.id} 
-        name={elem.name} 
-        city={elem.location.city} 
-        country={elem.location.country} 
-        status={elem.status} 
-        flag={elem.flag}
-        />)
 
-    return (
-        <div>
-            {newFriends}
-        </div>
-    )
+    return  <div>
+        {
+            props.findFriends.map((elem) => ( 
+                <div key={elem.id} className={classes.itemUsers}>
+                    <div>
+                        {elem.name}   
+                    </div>
+                    <div>
+                        Статус: {elem.status}
+                    </div>
+                    <div>
+                        <span>{elem.location.city}</span>
+                    </div>
+                    <div>
+                        <span>{elem.location.country}</span>
+                    </div>
+                    <div>
+                        {elem.flag ? <button onClick={()=>{props.unFollow(elem.id)}}>Убрать из друзей</button> : <button onClick={()=>{props.follow(elem.id)}}>Добавить в друзья</button>}
+                    </div>
+                </div>
+            )
+            )
+        }
+               
+    </div>
+        
+    
 }
 
 
