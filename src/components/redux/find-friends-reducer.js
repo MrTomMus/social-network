@@ -1,13 +1,10 @@
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
+const SET_USERS = 'SET-USERS'
 
 
 let inicialState = {
-    users: [
-        { id: 1, flag: false, name: 'Sergey', status: 'Hello', location: { country: 'Russian', city: 'Moscow'}},
-        { id: 2, flag: true, name: 'Rinat', status: 'Hi', location: { country: 'Russian', city: 'Moscow'}},
-        { id: 3, flag: false, name: 'Sasha', status: 'I am Boss', location: { country: 'Russian', city: 'Moscow'}}
-    ]
+    users: []
 }
 
 const findFriendsReducer = (state = inicialState, action) => {
@@ -36,6 +33,12 @@ const findFriendsReducer = (state = inicialState, action) => {
                 })
             }
         }
+        case 'SET-USERS':{
+            return {
+                ...state,
+                users: [...action.users]
+            }
+        }
         default: {
             return state
         }
@@ -53,6 +56,12 @@ export let followAc = (userId) => {
 export let unFollowAc = (userId) => {
     return {
         type: UNFOLLOW, userId
+    }
+}
+
+export let setUsersAc = (users) => {
+    return {
+        type: SET_USERS, users
     }
 }
 

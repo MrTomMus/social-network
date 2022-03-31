@@ -4,13 +4,24 @@ import classes from './FindFriends.module.css';
 
 
 const FindFriends = (props) => {
-    console.log(props)
+    
+    if(props.users.length === 0){
+        props.setUsers([
+            { id: 1, flag: false, ava: 'https://www.kindpng.com/picc/m/495-4952535_create-digital-profile-icon-blue-user-profile-icon.png', name: 'Sergey', status: 'Hello', location: { country: 'Russian', city: 'Moscow'}},
+            { id: 2, flag: true, ava: 'https://www.kindpng.com/picc/m/495-4952535_create-digital-profile-icon-blue-user-profile-icon.png', name: 'Rinat', status: 'Hi', location: { country: 'Russian', city: 'Moscow'}},
+            { id: 3, flag: false, ava: 'https://www.kindpng.com/picc/m/495-4952535_create-digital-profile-icon-blue-user-profile-icon.png', name: 'Sasha', status: 'I am Boss', location: { country: 'Russian', city: 'Moscow'}}
+        ])
+    }
+    
     
 
     return  <div>
         {
-            props.findFriends.map((elem) => ( 
+            props.users.map((elem) => ( 
                 <div key={elem.id} className={classes.itemUsers}>
+                    <div>
+                        <img src={elem.ava}/>
+                    </div>
                     <div>
                         {elem.name}   
                     </div>
