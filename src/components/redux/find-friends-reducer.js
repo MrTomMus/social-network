@@ -14,7 +14,7 @@ const findFriendsReducer = (state = inicialState, action) => {
                 ...state,
                 users: state.users.map(user => {
                     if(user.id === action.userId){
-                        return {...user, flag: true}
+                        return {...user, followed: true}
                     }else{
                         return user;
                     }
@@ -26,7 +26,7 @@ const findFriendsReducer = (state = inicialState, action) => {
                 ...state,
                 users: state.users.map(user => {
                     if(user.id === action.userId){
-                        return {...user, flag: false}
+                        return {...user, followed: false}
                     }else{
                         return user;
                     }
