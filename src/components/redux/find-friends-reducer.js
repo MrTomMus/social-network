@@ -1,10 +1,14 @@
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET-USERS'
+const SET_PAGE = 'SET-PAGE'
 
 
 let inicialState = {
-    users: []
+    users: [],
+    totalCount: 0,
+    countPage: 10,
+    currentPage: 1
 }
 
 const findFriendsReducer = (state = inicialState, action) => {
@@ -33,10 +37,18 @@ const findFriendsReducer = (state = inicialState, action) => {
                 })
             }
         }
-        case 'SET-USERS':{
+        case 'SET-USERS': {
             return {
                 ...state,
-                users: [...action.users]
+                users: [...action.data.items],
+                totalCount: action.data.totalCount-18380
+            }
+        }
+        case 'SET-PAGE': {
+            return {
+                ...state,
+                currentPage: action.page,
+                
             }
         }
         default: {
@@ -59,9 +71,15 @@ export let unFollowAc = (userId) => {
     }
 }
 
-export let setUsersAc = (users) => {
+export let setUsersAc = (data) => {
     return {
-        type: SET_USERS, users
+        type: SET_USERS, data, 
+    }
+}
+
+export let setPageAC = (page) => {
+    return {
+        type: SET_PAGE, page
     }
 }
 

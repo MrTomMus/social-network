@@ -7,17 +7,21 @@ import usersPhoto from '../../../assets/img/usersPhoto.png';
 
 const FindFriends = (props) => {
     
+    let getUsers = () => {
+        console.log('click')
     if(props.users.length === 0){
 
         axios.get('https://social-network.samuraijs.com/api/1.0/users').then(response => {
             props.setUsers(response.data.items)
         })
     }
-    
+}
     
 
     return  <div>
+        <button className={classes.buttonUsers} onClick={getUsers}>get users</button>
         {
+            
             props.users.map((elem) => ( 
                 <div key={elem.id} className={classes.itemUsers}>
                     <div>

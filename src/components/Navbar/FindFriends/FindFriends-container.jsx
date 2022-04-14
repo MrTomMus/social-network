@@ -1,12 +1,14 @@
 import { connect } from "react-redux";
-import { followAc, unFollowAc, setUsersAc} from "../../redux/find-friends-reducer";
-
-import FindFriends from "./FindFriends";
+import { followAc, unFollowAc, setUsersAc, setPageAC} from "../../redux/find-friends-reducer";
+import FindFriends from "./FindFriendsC";
 
 let mapStateToProps = (store) => {
     
     return {
         users: store.findFriends.users,
+        totalCount: store.findFriends.totalCount,
+        countPage: store.findFriends.countPage,
+        currentPage: store.findFriends.currentPage
         
     }
 }
@@ -19,9 +21,12 @@ let mapDispatchToProps = (dispatch) => {
         unFollow: (userId) => {
             dispatch(unFollowAc(userId))
         },
-        setUsers: (users) => {
-            dispatch(setUsersAc(users));
-        } 
+        setUsers: (data) => {
+            dispatch(setUsersAc(data));
+        }, 
+        setPage: (page) => {
+            dispatch(setPageAC(page))
+        }
     }
         
 }
