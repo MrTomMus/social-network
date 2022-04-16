@@ -11,7 +11,7 @@ class FindFriendsApi extends React.Component {
 
     }
     
-    clickPage(elem) {
+    clickPage = (elem) => {
         this.props.setPage(elem)
         console.log(elem)
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.countPage}&page=${elem}`).then(response => {
