@@ -1,14 +1,16 @@
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
-const SET_USERS = 'SET-USERS'
-const SET_PAGE = 'SET-PAGE'
+const SET_USERS = 'SET-USERS';
+const SET_PAGE = 'SET-PAGE';
+const TOGGLE_PRELOADER = 'TOGGLE_PRELOADER';
 
 
 let inicialState = {
     users: [],
     totalCount: 0,
     countPage: 10,
-    currentPage: 1
+    currentPage: 1,
+    isPreloader: true,
 }
 
 const findFriendsReducer = (state = inicialState, action) => {
@@ -48,7 +50,12 @@ const findFriendsReducer = (state = inicialState, action) => {
             return {
                 ...state,
                 currentPage: action.page,
-                
+            }
+        }
+        case 'TOGGLE-PRELOADER': {
+            return {
+                ...state,
+                isPreloader: action.isPreloading
             }
         }
         default: {
@@ -80,6 +87,11 @@ export let setUsersAc = (data) => {
 export let setPageAC = (page) => {
     return {
         type: SET_PAGE, page
+    }
+}
+export let preloaderAC = (isPreloading) => {
+    return {
+        type: TOGGLE_PRELOADER, isPreloading
     }
 }
 

@@ -3,6 +3,9 @@ import { connect } from "react-redux";
 import { followAc, unFollowAc, setUsersAc, setPageAC} from "../../redux/find-friends-reducer";
 import * as axios from "axios";
 import FindFriendsC from './FindFriendsC';
+import Preloader from './Preloader';
+
+
 
 
 class FindFriendsApi extends React.Component {
@@ -27,9 +30,10 @@ class FindFriendsApi extends React.Component {
     }
 
     render() {
-        
+        console.log(this.props)
         return (
-            
+            <>
+            <Preloader preloader={this.props.isPreloader} />
             <FindFriendsC totalCount={this.props.totalCount}
                         countPage={this.props.countPage}
                         currentPage={this.props.currentPage}
@@ -37,7 +41,7 @@ class FindFriendsApi extends React.Component {
                         users={this.props.users}
                         unFollow={this.props.unFollow} 
                         follow={this.props.follow}/>
-                        
+              </>          
         )               
     }
 }
@@ -48,7 +52,8 @@ let mapStateToProps = (store) => {
         users: store.findFriends.users,
         totalCount: store.findFriends.totalCount,
         countPage: store.findFriends.countPage,
-        currentPage: store.findFriends.currentPage
+        currentPage: store.findFriends.currentPage,
+        isPrelouder: store.findFriends.isPreloader
         
     }
 }

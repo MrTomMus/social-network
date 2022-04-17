@@ -32,3 +32,7 @@
 .selectedPage{
     color: greenyellow;
 }
+
+.preloader{
+    width: 50%;
+}
