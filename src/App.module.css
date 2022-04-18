@@ -12,7 +12,7 @@
 
 .content{
   grid-area: c;
-  background-color: rgb(0, 225, 255);
+  background-color: #00e1ff;
 }
 
 .content .item{

@@ -1,12 +1,13 @@
-import React from 'React';
-import preloader from '../../../assets/img/preloader.gif';
+import React from 'react';
+import preloader from '../../../assets/img/preloader.svg';
 import classes from './Preloader.module.css'
 
 let Preloader = (props) => {
+   
     return (
         <div className={classes.preloader}>
-                {!props.isPreloader ? <img src={preloader}></img> : 'Привет'}  
-                {console.log(props.isPreloader)}
+                {props.preloader ? <img src={preloader}></img> : null}  
+                {console.log(props.preloader)}
             </div>
     )
 }
