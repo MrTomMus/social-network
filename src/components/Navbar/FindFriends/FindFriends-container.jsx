@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from "react-redux";
-import { followAc, unFollowAc, setUsersAc, setPageAC, preloaderAc} from "../../redux/find-friends-reducer";
+import {follow, unFollow, setUsers, setPage, preloader} from "../../redux/find-friends-reducer";
 import * as axios from "axios";
 import FindFriendsC from './FindFriendsC';
 import Preloader from './Preloader';
@@ -16,20 +16,20 @@ class FindFriendsApi extends React.Component {
     
     clickPage = (elem) => {
         this.props.setPage(elem)
-        this.props.setPriloader(true)
+        this.props.preloader(true)
         console.log(elem)
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.countPage}&page=${elem}`).then(response => {
             this.props.setUsers(response.data)
-            this.props.setPriloader(false)
+            this.props.preloader(false)
         })
     }
 
     componentDidMount() {
-        this.props.setPriloader(true)
+        this.props.preloader(true)
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.countPage}&page=${this.props.currentPage}`).then(response => {
             this.props.setUsers(response.data)
             console.log(response)
-            this.props.setPriloader(false)
+            this.props.preloader(false)
         })
     }
 
@@ -38,13 +38,15 @@ class FindFriendsApi extends React.Component {
         return (
             <>
             <Preloader preloader={this.props.isPreloader} />
-            <FindFriendsC totalCount={this.props.totalCount}
+            {!this.props.isPreloader && <FindFriendsC totalCount={this.props.totalCount}
                         countPage={this.props.countPage}
                         currentPage={this.props.currentPage}
                         clickPage={this.clickPage}
                         users={this.props.users}
                         unFollow={this.props.unFollow} 
-                        follow={this.props.follow}/>
+                        follow={this.props.follow}
+                        preloader={this.props.isPreloader}/>}
+            
               </>          
         )               
     }
@@ -62,28 +64,16 @@ let mapStateToProps = (store) => {
     }
 }
 
-let mapDispatchToProps = (dispatch) => {
-    return {
-        follow: (userId) => {
-            dispatch(followAc(userId))
-        },
-        unFollow: (userId) => {
-            dispatch(unFollowAc(userId))
-        },
-        setUsers: (data) => {
-            dispatch(setUsersAc(data));
-        }, 
-        setPage: (page) => {
-            dispatch(setPageAC(page))
-        },
-        setPriloader: (bool) => {
-            dispatch(preloaderAc(bool))
-        }
-    }    
-}
 
 
 
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(FindFriendsApi);
+
+export default connect(mapStateToProps, {
+    follow: follow,
+    unFollow: unFollow,
+    setUsers: setUsers,
+    setPage: setPage,
+    preloader: preloader,
+})(FindFriendsApi);

@@ -68,30 +68,30 @@ const findFriendsReducer = (state = inicialState, action) => {
 }
 
 
-export let followAc = (userId) => {
+export let follow = (userId) => {
     return {
         type: FOLLOW, userId
     }   
 }
 
-export let unFollowAc = (userId) => {
+export let unFollow = (userId) => {
     return {
         type: UNFOLLOW, userId
     }
 }
 
-export let setUsersAc = (data) => {
+export let setUsers = (data) => {
     return {
         type: SET_USERS, data, 
     }
 }
 
-export let setPageAC = (page) => {
+export let setPage = (page) => {
     return {
         type: SET_PAGE, page
     }
 }
-export let preloaderAc = (isPreloading) => {
+export let preloader = (isPreloading) => {
     
     return {
         type: TOGGLE_PRELOADER, isPreloading
