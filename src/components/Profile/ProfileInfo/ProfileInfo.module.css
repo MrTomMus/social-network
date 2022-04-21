@@ -1,5 +1,22 @@
-.profileInfo{
-    display: grid;
-    grid-template-columns: 3fr 9fr;
-    padding: 10px;
+.avatar img{
+    width: 20%;
+    margin-top: 10px;
+    margin-left: 10px;
+    border-radius: 50% 50% 50% 50%;
+}
+
+.profileName{
+    font-size: 50px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+.discription{
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+.contactInfo{
+    margin-left: 10px;
+    margin-bottom: 10px;
 }

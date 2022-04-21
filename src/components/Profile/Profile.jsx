@@ -8,7 +8,7 @@ import Post from './Post/Post';
 
 
 const Profile = (props) => {
-    console.log(props)
+   
     let postsData = props.profilePage.postData.map(elem => <Post key={elem.id} message={elem.message} like={elem.like}/>)
 
     let newPostElement = React.createRef() 
@@ -28,7 +28,7 @@ const Profile = (props) => {
                 <img src='https://klike.net/uploads/posts/2019-11/1574605232_1.jpg'></img>
             </div> 
             <div>
-                <ProfileInfo />
+                <ProfileInfo {...props} />
             </div>
             <div className={classes.addPost}>
                 <input onChange={onChangeText} ref={newPostElement} value={props.profilePage.newPostText}/>

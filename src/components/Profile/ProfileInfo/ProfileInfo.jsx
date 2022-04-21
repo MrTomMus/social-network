@@ -1,14 +1,21 @@
 import React from 'react';
 import classes from './ProfileInfo.module.css';
 
-const ProfileInfo = () =>{
+const ProfileInfo = (props) =>{
+    console.log(props)
     return (
         <div className={classes.profileInfo}>
             <div className={classes.avatar}>
-                <img src='' alt='Добавить аватар'></img>
-                    </div>
+                <img src={props.profilePage.profiles.photos.large} alt='Добавить аватар'></img>
+            </div>
+            <div className={classes.profileName}>
+                <span>{props.profilePage.profiles.fullName}</span>
+            </div>
             <div className={classes.discription}>
-                Описание
+                 <span>Обо мне: {props.profilePage.profiles.aboutMe}</span>
+            </div>
+            <div className={classes.contactInfo}>
+                <span>{}</span>
             </div>
         </div>
     )
