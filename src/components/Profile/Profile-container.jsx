@@ -3,7 +3,7 @@ import Profile from './Profile';
 import { createAddPost, createUpdateNewPostText, setProfilesAc } from '../redux/profile-reducer'
 import React from 'react';
 import axios from 'axios';
-import Preloader from "../Navbar/FindFriends/Preloader";
+import { withRouter } from "react-router-dom";
 
 
 
@@ -12,11 +12,18 @@ import Preloader from "../Navbar/FindFriends/Preloader";
 class ProfileApi extends React.Component {
     constructor(props){
         super(props)
-        
+        console.log(props)
     }
 
     componentDidMount(){
-        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/2`).then(response => {
+        
+        let userId = this.props.match.params.userId
+
+        if(!userId){
+            userId = 2
+        }
+      
+        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/`+userId).then(response => {
             this.props.setProfilesAc(response.data)
             
         })
@@ -50,6 +57,6 @@ let mapDispatchToProps = (dispatch) => {
     }     
 }
 
+let withRouterProfileApi = withRouter(ProfileApi)
 
-
-export default connect(mapStateToProps, mapDispatchToProps)(ProfileApi);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouterProfileApi);

@@ -23,7 +23,7 @@ let FindFriends = (props) => {
                 props.users.map((elem) => (
                     <div key={elem.id} className={classes.itemUsers}>
                         <div>
-                            <NavLink to='/profile/2'>
+                            <NavLink to={'/profile/' + elem.id}>
                                 <img src={elem.photos.small != null ? elem.photos.small : usersPhoto} />
                             </NavLink>   
                         </div>

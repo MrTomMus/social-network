@@ -22,7 +22,7 @@ const App = (props) => {
           <Header />
           <Navbar />
           <div className={classes.content}>
-              <Route path='/profile' render={() => <ProfileContainer/>}/>
+              <Route path='/profile/:userId?' render={() => <ProfileContainer/>}/>
               <Route path='/messanger' render={() => <MessangerContainer/>}/>
               <Route path='/music' component={Music}/>
               <Route path='/news' component={News}/>
