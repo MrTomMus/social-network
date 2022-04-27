@@ -1,6 +1,7 @@
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 const SET_PROFILES = 'SET-PROFILES';
+const TOGGLE_PRELOADER = 'TOGGLE-PRELOADER';
 
 let inicialState = {
     postData: [
@@ -8,7 +9,8 @@ let inicialState = {
         { id: 2, message: 'Its my first post', like: 15 },
     ],
     newPostText: '',
-    profiles: null
+    profiles: null,
+    isPreloader: true,
 }
 
 const profileReducer = (state = inicialState, action) => {
@@ -38,6 +40,14 @@ const profileReducer = (state = inicialState, action) => {
                 profiles: action.item
             }
         }
+        case 'TOGGLE-PRELOADER': {
+            
+            return {
+                ...state,
+                isPreloader: action.isPreloading
+                
+            }
+        }
         default:
             return state
         }   
@@ -60,6 +70,13 @@ export let setProfilesAc = (item) => {
     return {
         type: SET_PROFILES, item
         
+    }
+}
+
+export let preloader = (isPreloading) => {
+    
+    return {
+        type: TOGGLE_PRELOADER, isPreloading
     }
 }
 

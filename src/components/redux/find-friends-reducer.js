@@ -43,7 +43,7 @@ const findFriendsReducer = (state = inicialState, action) => {
             return {
                 ...state,
                 users: [...action.data.items],
-                totalCount: action.data.totalCount-18380
+                totalCount: action.data.totalCount-18405
             }
         }
         case 'SET-PAGE': {

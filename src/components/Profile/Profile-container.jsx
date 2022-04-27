@@ -1,9 +1,10 @@
 import { connect } from "react-redux";
 import Profile from './Profile';
-import { createAddPost, createUpdateNewPostText, setProfilesAc } from '../redux/profile-reducer'
+import { createAddPost, createUpdateNewPostText, preloader, setProfilesAc } from '../redux/profile-reducer'
 import React from 'react';
 import axios from 'axios';
 import { withRouter } from "react-router-dom";
+import Preloader from "../Navbar/FindFriends/Preloader";
 
 
 
@@ -12,9 +13,9 @@ import { withRouter } from "react-router-dom";
 class ProfileApi extends React.Component {
     constructor(props){
         super(props)
-        console.log(props)
+        
     }
-
+    
     componentDidMount(){
         
         let userId = this.props.match.params.userId
@@ -22,16 +23,17 @@ class ProfileApi extends React.Component {
         if(!userId){
             userId = 2
         }
-      
+        this.props.preloaderAC(false);
+        
         axios.get(`https://social-network.samuraijs.com/api/1.0/profile/`+userId).then(response => {
             this.props.setProfilesAc(response.data)
-            
+            this.props.preloaderAC(true);   
         })
     }
 
     render() {
         return (
-           !this.props.profilePage.profiles ? null : <Profile {...this.props} />
+           !this.props.profilePage.profiles ? <Preloader preloader={this.props.profilePage.isPreloader} /> : <Profile {...this.props} />
         )  
     }
 }
@@ -53,6 +55,9 @@ let mapDispatchToProps = (dispatch) => {
         },
         setProfilesAc: (item) => {
             dispatch(setProfilesAc(item))
+        },
+        preloaderAC: (bool) => {
+            dispatch(preloader(bool))
         }
     }     
 }
