@@ -6,3 +6,11 @@
   .header img{
     height: 60px;
   }
+
+  .header span{
+    position: absolute;
+    font-size: 20px;
+    margin-top: 15px;
+    margin-left: 950px;
+    
+  }

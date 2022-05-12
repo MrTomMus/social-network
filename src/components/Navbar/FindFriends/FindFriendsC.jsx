@@ -8,7 +8,7 @@ let FindFriends = (props) => {
     console.log(props)
     let pages = [];
 
-        for (let i = 1; i <= Math.ceil(props.totalCount / props.countPage); i++) {
+        for (let i = 1; i <= Math.ceil((props.totalCount / props.countPage) - 43); i++) {
             pages.push(i);
         }
         console.log('page' + props.currentPage)

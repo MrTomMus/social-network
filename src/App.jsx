@@ -10,6 +10,7 @@ import ProfileContainer from './components/Profile/Profile-container';
 import MessangerContainer from './components/Messanger/Messanger-container';
 import FriendsContainer from './components/Friends/Friends-container';
 import FindFriendsContainer from './components/Navbar/FindFriends/FindFriends-container';
+import HeaderContainer from './components/Header/Header-container';
 
 
 const App = (props) => {
@@ -19,7 +20,7 @@ const App = (props) => {
     
         <div className={classes.appWrapper}>
           
-          <Header />
+          <HeaderContainer />
           <Navbar />
           <div className={classes.content}>
               <Route path='/profile/:userId?' render={() => <ProfileContainer/>}/>

@@ -53,14 +53,12 @@ class FindFriendsApi extends React.Component {
 }
 
 let mapStateToProps = (store) => {
-    
     return {
         users: store.findFriends.users,
         totalCount: store.findFriends.totalCount,
         countPage: store.findFriends.countPage,
         currentPage: store.findFriends.currentPage,
-        isPreloader: store.findFriends.isPreloader
-        
+        isPreloader: store.findFriends.isPreloader   
     }
 }
 
