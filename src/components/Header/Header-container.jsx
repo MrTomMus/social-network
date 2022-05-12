@@ -18,7 +18,6 @@ class HeaderApi extends React.Component {
         }).then(response => {
             this.props.setApi(response.data)
             console.log(response.data)
-            console.log(this.props)
         })
     }
 

@@ -1,5 +1,4 @@
 import React from 'react'
-import Header from './components/Header/Header';
 import Navbar from './components/Navbar/Navbar';
 import Music from './components/Music/Music';
 import classes from './App.module.css';
@@ -11,6 +10,7 @@ import MessangerContainer from './components/Messanger/Messanger-container';
 import FriendsContainer from './components/Friends/Friends-container';
 import FindFriendsContainer from './components/Navbar/FindFriends/FindFriends-container';
 import HeaderContainer from './components/Header/Header-container';
+import AuthMeContainer from './components/Header/AuthComponent/AuthMe-container';
 
 
 const App = (props) => {
@@ -23,6 +23,7 @@ const App = (props) => {
           <HeaderContainer />
           <Navbar />
           <div className={classes.content}>
+              <Route path='/myAuth' render={() => <AuthMeContainer />}/>
               <Route path='/profile/:userId?' render={() => <ProfileContainer/>}/>
               <Route path='/messanger' render={() => <MessangerContainer/>}/>
               <Route path='/music' component={Music}/>
