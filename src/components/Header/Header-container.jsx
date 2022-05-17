@@ -31,7 +31,9 @@ class HeaderApi extends React.Component {
 
 let mapStateToProps = (store) => {
     return {
-        data: store.header.data
+        userInfo: store.header.userInfo,
+        messages: store.header.messages,
+        resultCode: store.header.resultCode
     }
 }
 

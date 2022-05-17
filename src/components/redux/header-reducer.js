@@ -2,14 +2,14 @@ const SET_STATE = 'SET-STATE'
 
 
 let inicialState = {
-    data: {
+    userInfo: {
         id: null,
         login: null,
         email: null,
         },
     messages: [],
     fieldsErrors: [],
-    resultCode: 1
+    resultCode: 0
 }
 
 
@@ -18,7 +18,9 @@ const headerReaducer = (state = inicialState, action) => {
         case SET_STATE:{
             return {
                 ...state,
-                data: action.data
+                userInfo: action.data.data,
+                messages: [action.data.messages],
+                resultCode: action.data.resultCode
             }
         }
         default:{

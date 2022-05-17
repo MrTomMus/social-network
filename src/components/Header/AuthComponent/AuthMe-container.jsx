@@ -1,10 +1,10 @@
-import React from "react";
+
 import { connect } from "react-redux";
 import AuthMe from "./AuthMe";
 
 let mapStateToProps = (store) => {
     return {
-        data: store.header.data
+        userInfo: store.header.userInfo
     }
 }
 
