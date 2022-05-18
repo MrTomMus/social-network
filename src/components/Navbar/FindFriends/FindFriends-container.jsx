@@ -18,7 +18,7 @@ class FindFriendsApi extends React.Component {
         this.props.setPage(elem)
         this.props.preloader(true)
         console.log(elem)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.countPage}&page=${elem}`).then(response => {
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.countPage}&page=${elem}`, {withCredentials: true}).then(response => {
             this.props.setUsers(response.data)
             this.props.preloader(false)
         })
@@ -26,7 +26,7 @@ class FindFriendsApi extends React.Component {
 
     componentDidMount() {
         this.props.preloader(true)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.countPage}&page=${this.props.currentPage}`).then(response => {
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.countPage}&page=${this.props.currentPage}`, {withCredentials: true}).then(response => {
             this.props.setUsers(response.data)
             console.log(response)
             this.props.preloader(false)
