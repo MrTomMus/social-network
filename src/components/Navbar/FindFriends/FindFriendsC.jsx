@@ -9,13 +9,13 @@ let FindFriends = (props) => {
     console.log(props)
     let pages = [];
 
-        for (let i = 1; i <= Math.ceil((props.totalCount / props.countPage) - 43); i++) {
+        for (let i = 1; i <= Math.ceil((props.totalCount / props.countPage)); i++) {
             pages.push(i);
         }
         
   
     return (
-        <div>
+        <div className={classes.page}>
             <div className={classes.pageNumber}>{pages.map(elem =>
                 <span className={props.currentPage === elem && classes.selectedPage} onClick={() => props.clickPage(elem)}>{elem}</span>
             )}</div>

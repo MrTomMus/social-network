@@ -1,4 +1,21 @@
+.friends {
+    display: flex;
+    flex-direction: column;
+}
+
+.friendItem {
+    display: flex;
+    align-items: center;
+    
+}
+
 .friendItem img{
-    width: 5%;
+    width: 50px;
     border-radius: 50%;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.friendItem span {
+    margin-left: 10px;
 }

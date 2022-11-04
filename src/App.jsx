@@ -20,19 +20,27 @@ const App = (props) => {
     
     
         <div className={classes.appWrapper}>
-          
-          <HeaderContainer />
-          <Navbar />
-          <div className={classes.content}>
-              <Route path='/myAuth' render={() => <AuthMeContainer />}/>
-              <Route path='/notAuth' render={() => <LogoutContainer/>}/>
-              <Route path='/profile/:userId?' render={() => <ProfileContainer/>}/>
-              <Route path='/messanger' render={() => <MessangerContainer/>}/>
-              <Route path='/music' component={Music}/>
-              <Route path='/news' component={News}/>
-              <Route path='/settings' component={Settings}/>
-              <Route path='/friends' render={() => <FriendsContainer/>}/>
-              <Route path='/find-friends' render={() => <FindFriendsContainer/>}/>
+          <div className={classes.container}>
+            <header className={classes.header}>
+              <HeaderContainer />
+            </header>
+            <div className={classes.main}>
+              <div className={classes.navbar}>
+                <Navbar />
+              </div>
+              <div className={classes.content}>
+                  <Route path='/myAuth' render={() => <AuthMeContainer />}/>
+                  <Route path='/notAuth' render={() => <LogoutContainer/>}/>
+                  <Route path='/profile/:userId?' render={() => <ProfileContainer/>}/>
+                  <Route path='/messanger' render={() => <MessangerContainer/>}/>
+                  <Route path='/music' component={Music}/>
+                  <Route path='/news' component={News}/>
+                  <Route path='/settings' component={Settings}/>
+                  <Route path='/friends' render={() => <FriendsContainer/>}/>
+                  <Route path='/find-friends' render={() => <FindFriendsContainer/>}/>
+              </div>
+            </div>
+            
           </div>
         </div>
     

@@ -12,16 +12,14 @@ const FriendsNav = (props) => {
             <div key={elem.id} className={classes.friendsNav}>
                 <div className={classes.block}>
                     <img src={elem.ava}/>
-                </div>
-                <div className={classes.block}>
                     <span>{elem.name}</span>
-                </div> 
+                </div>
            </div>  
         )}
     })
 
     return (
-        <div>
+        <div className={classes.friendsNavBlock}>
             {friendsNavItem}
         </div>
     )

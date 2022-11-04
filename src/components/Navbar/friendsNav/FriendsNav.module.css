@@ -1,5 +1,24 @@
+.friendsNavBlock {
+    display: flex;
+    justify-content: space-around;
+}
+
+.friendsNav {
+    
+    
+}
+
+.block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50px;
+    
+    
+}
+
 .friendsNav img{
-    width: 10%;
+    width: 50px;
 }
 
 .friendsNav span{

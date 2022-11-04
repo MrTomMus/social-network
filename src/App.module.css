@@ -1,18 +1,29 @@
 .appWrapper {
-  display: grid;
-  grid-template-areas: 
-  'h h'
-  'n c';
-  grid-template-rows: 60px 1fr;
-  grid-template-columns: 2fr 10fr;
-  grid-gap: 10px;
-  width: 1200px;
+  width: 1600px;
   margin: auto;
 }
 
+.container {
+  width: 1400px;
+  margin: 0 auto;
+}
+
+.header {
+  margin: 10px 0;
+}
+
+.main {
+  display: flex;
+}
+
+.navbar {
+  width: 300px;
+}
+
 .content{
-  grid-area: c;
   background-color: #00e1ff;
+  width: 100%;
+  margin-left: 10px;
 }
 
 .content .item{
@@ -24,10 +35,9 @@
   border-radius: 50%;
 }
 
-.content img{
-  width: 100%;
-  height: 50%;
-}
+
+
+
 
 
   

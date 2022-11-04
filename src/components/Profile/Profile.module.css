@@ -1,3 +1,11 @@
+ .profile {
+    width: 100%;
+ }
+
+ .profileLogo img {
+    width: 100%;
+ }
+ 
  .addPost{
     margin: 10px;
 }
