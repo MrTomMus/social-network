@@ -4,6 +4,7 @@ import {follow, unFollow, setUsers, setPage, preloader} from "../../redux/find-f
 import * as axios from "axios";
 import FindFriendsC from './FindFriendsC';
 import Preloader from './Preloader';
+import { getPage, getCurrentPage } from '../../../api/api';
 
 
 
@@ -18,18 +19,20 @@ class FindFriendsApi extends React.Component {
         this.props.setPage(elem)
         this.props.preloader(true)
         console.log(elem)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.countPage}&page=${elem}`, {withCredentials: true}).then(response => {
-            this.props.setUsers(response.data)
-            this.props.preloader(false)
+        getPage(this.props.countPage, elem)
+            .then(response => {
+                this.props.setUsers(response.data)
+                this.props.preloader(false)
         })
     }
 
     componentDidMount() {
         this.props.preloader(true)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.countPage}&page=${this.props.currentPage}`, {withCredentials: true}).then(response => {
-            this.props.setUsers(response.data)
-            console.log(response)
-            this.props.preloader(false)
+        getCurrentPage(this.props.countPage, this.props.currentPage)
+            .then(response => {
+                this.props.setUsers(response.data)
+                console.log(response)
+                this.props.preloader(false)
         })
     }
 

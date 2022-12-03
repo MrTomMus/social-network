@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import Header from './Header';
 import {setApi} from './../redux/header-reducer'
 import * as axios from 'axios';
+import { getMe } from '../../api/api';
 
 
 
@@ -13,9 +14,7 @@ class HeaderApi extends React.Component {
     }
     
     componentDidMount(){
-        axios.get('https://social-network.samuraijs.com/api/1.0/auth/me', {
-            withCredentials: true
-        }).then(response => {
+       getMe().then(response => {
             this.props.setApi(response.data)
             console.log(response.data)
         })
