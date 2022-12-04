@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from "react-redux";
-import {follow, unFollow, setUsers, setPage, preloader} from "../../redux/find-friends-reducer";
-import * as axios from "axios";
+import {follow, unFollow, setUsers, setPage, preloader, toggleDisabled} from "../../redux/find-friends-reducer";
 import FindFriendsC from './FindFriendsC';
 import Preloader from './Preloader';
 import { getPage, getCurrentPage } from '../../../api/api';
@@ -35,9 +34,9 @@ class FindFriendsApi extends React.Component {
                 this.props.preloader(false)
         })
     }
-
+    
     render() {
-        console.log(this.props)
+       console.log(this.props)
         return (
             <>
             <Preloader preloader={this.props.isPreloader} />
@@ -48,7 +47,9 @@ class FindFriendsApi extends React.Component {
                         users={this.props.users}
                         unFollow={this.props.unFollow} 
                         follow={this.props.follow}
-                        preloader={this.props.isPreloader}/>}
+                        preloader={this.props.isPreloader}
+                        followedInProgress={this.props.followedInProgress}
+                        toggleDisabled={this.props.toggleDisabled}/>}
             
               </>          
         )               
@@ -61,7 +62,8 @@ let mapStateToProps = (store) => {
         totalCount: store.findFriends.totalCount,
         countPage: store.findFriends.countPage,
         currentPage: store.findFriends.currentPage,
-        isPreloader: store.findFriends.isPreloader   
+        isPreloader: store.findFriends.isPreloader,
+        followedInProgress: store.findFriends.followedInProgress,   
     }
 }
 
@@ -77,4 +79,6 @@ export default connect(mapStateToProps, {
     setUsers: setUsers,
     setPage: setPage,
     preloader: preloader,
+    toggleDisabled: toggleDisabled,
+
 })(FindFriendsApi);

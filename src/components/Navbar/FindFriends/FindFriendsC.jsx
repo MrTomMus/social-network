@@ -41,7 +41,9 @@ let FindFriends = (props) => {
                             <span>{'elem.location.country'}</span>
                         </div>
                         <div>
-                            {elem.followed ? <button onClick={() => { 
+                            {elem.followed ? <button disabled={props.followedInProgress.some(id => id === elem.id)} onClick={() => { 
+                                props.toggleDisabled(true, elem.id)
+                                console.log(elem.id)
                                 axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${elem.id}`, {
                                     withCredentials: true,
                                     headers: {
@@ -56,8 +58,10 @@ let FindFriends = (props) => {
                                         console.log(response)
                                         props.unFollow(elem.id)
                                     }   
+                                    props.toggleDisabled(false, elem.id)
                                 })
-                             }}>Убрать из друзей</button> : <button onClick={() => { 
+                             }}>Убрать из друзей</button> : <button disabled={props.followedInProgress.some(id => id === elem.id)} onClick={() => { 
+                                props.toggleDisabled(true, elem.id)
                                  axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${elem.id}`, {}, {
                                     withCredentials: true,
                                     headers: {
@@ -70,6 +74,7 @@ let FindFriends = (props) => {
                                          console.log(response)
                                          props.follow(elem.id)
                                      }
+                                     props.toggleDisabled(false, elem.id)
                                  })
                               }}>Добавить в друзья</button>}
                         </div>

@@ -1,8 +1,11 @@
+import { isDisabled } from "@testing-library/user-event/dist/utils";
+
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET-USERS';
 const SET_PAGE = 'SET-PAGE';
 const TOGGLE_PRELOADER = 'TOGGLE-PRELOADER';
+const TOGGLE_DISABLED = 'TOGGLE-DISABLED';
 
 
 let inicialState = {
@@ -11,6 +14,7 @@ let inicialState = {
     countPage: 10,
     currentPage: 1,
     isPreloader: true,
+    followedInProgress: [],
 }
 
 const findFriendsReducer = (state = inicialState, action) => {
@@ -60,6 +64,16 @@ const findFriendsReducer = (state = inicialState, action) => {
                 
             }
         }
+
+        case 'TOGGLE-DISABLED': {
+            
+            return {
+                ...state, 
+                followedInProgress: action.isDisabling 
+                    ? [...state.followedInProgress, action.id]
+                    : state.followedInProgress.filter(id => id != action.id)
+            }
+        }
         default: {
             return state
         }
@@ -95,6 +109,12 @@ export let preloader = (isPreloading) => {
     
     return {
         type: TOGGLE_PRELOADER, isPreloading
+    }
+}
+
+export let toggleDisabled = (isDisabling, id) => {
+    return {
+        type: TOGGLE_DISABLED, isDisabling, id
     }
 }
 
