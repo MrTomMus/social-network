@@ -1,5 +1,3 @@
-import { isDisabled } from "@testing-library/user-event/dist/utils";
-
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET-USERS';
