@@ -3,6 +3,7 @@ import classes from './FindFriends.module.css';
 import usersPhoto from '../../../assets/img/usersPhoto.png';
 import { NavLink } from 'react-router-dom';
 import axios from "axios";
+import { follow, unfollow } from "../../../api/api";
 
 
 let FindFriends = (props) => {
@@ -43,15 +44,8 @@ let FindFriends = (props) => {
                         <div>
                             {elem.followed ? <button disabled={props.followedInProgress.some(id => id === elem.id)} onClick={() => { 
                                 props.toggleDisabled(true, elem.id)
-                                console.log(elem.id)
-                                axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${elem.id}`, {
-                                    withCredentials: true,
-                                    headers: {
-                                        'API-KEY': '92b1b8ad-79bf-4be0-96f2-9612566feef3'
-                                    }
-                                    
-                                })
-                                .then(response => {
+                               
+                                unfollow(elem.id).then(response => {
                                     console.log(response)
                                     if(response.data.resultCode == 0){
                                         console.log('test 1')
@@ -62,13 +56,8 @@ let FindFriends = (props) => {
                                 })
                              }}>Убрать из друзей</button> : <button disabled={props.followedInProgress.some(id => id === elem.id)} onClick={() => { 
                                 props.toggleDisabled(true, elem.id)
-                                 axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${elem.id}`, {}, {
-                                    withCredentials: true,
-                                    headers: {
-                                        'API-KEY': '92b1b8ad-79bf-4be0-96f2-9612566feef3'
-                                    } 
-                                 })
-                                 .then(response => {
+                                
+                                follow(elem.id).then(response => {
                                      if(response.data.resultCode == 0){
                                          console.log('test')
                                          console.log(response)
