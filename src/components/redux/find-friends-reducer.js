@@ -1,3 +1,6 @@
+import { unfollow, follow} from "../../api/api";
+
+
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET-USERS';
@@ -80,13 +83,13 @@ const findFriendsReducer = (state = inicialState, action) => {
 }
 
 
-export let follow = (userId) => {
+export let followAccept = (userId) => {
     return {
         type: FOLLOW, userId
     }   
 }
 
-export let unFollow = (userId) => {
+export let unFollowAccept = (userId) => {
     return {
         type: UNFOLLOW, userId
     }
@@ -113,6 +116,35 @@ export let preloader = (isPreloading) => {
 export let toggleDisabled = (isDisabling, id) => {
     return {
         type: TOGGLE_DISABLED, isDisabling, id
+    }
+}
+
+export const usersUnfollow = (id) => {
+    
+    return (dispatch) => {
+        console.log('test')
+        dispatch(toggleDisabled(true, id))
+                               
+        unfollow(id).then(response => {
+            console.log(response)
+            if(response.data.resultCode == 0){
+                dispatch(unFollowAccept(id))
+            }   
+            dispatch(toggleDisabled(false, id))
+        })
+    }
+}
+
+export const usersFollow = (id) => {
+    return (dispatch) => {
+        dispatch(toggleDisabled(true, id))
+                                
+        follow(id).then(response => {
+            if(response.data.resultCode == 0){
+                dispatch(followAccept(id))
+                }
+            dispatch(toggleDisabled(false, id))
+            })
     }
 }
 

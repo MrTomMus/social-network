@@ -2,8 +2,8 @@ import React from "react";
 import classes from './FindFriends.module.css';
 import usersPhoto from '../../../assets/img/usersPhoto.png';
 import { NavLink } from 'react-router-dom';
-import axios from "axios";
-import { follow, unfollow } from "../../../api/api";
+
+
 
 
 let FindFriends = (props) => {
@@ -43,28 +43,9 @@ let FindFriends = (props) => {
                         </div>
                         <div>
                             {elem.followed ? <button disabled={props.followedInProgress.some(id => id === elem.id)} onClick={() => { 
-                                props.toggleDisabled(true, elem.id)
-                               
-                                unfollow(elem.id).then(response => {
-                                    console.log(response)
-                                    if(response.data.resultCode == 0){
-                                        console.log('test 1')
-                                        console.log(response)
-                                        props.unFollow(elem.id)
-                                    }   
-                                    props.toggleDisabled(false, elem.id)
-                                })
+                              props.usersUnfollow(elem.id)
                              }}>Убрать из друзей</button> : <button disabled={props.followedInProgress.some(id => id === elem.id)} onClick={() => { 
-                                props.toggleDisabled(true, elem.id)
-                                
-                                follow(elem.id).then(response => {
-                                     if(response.data.resultCode == 0){
-                                         console.log('test')
-                                         console.log(response)
-                                         props.follow(elem.id)
-                                     }
-                                     props.toggleDisabled(false, elem.id)
-                                 })
+                                props.usersFollow(elem.id)
                               }}>Добавить в друзья</button>}
                         </div>
                     </div>

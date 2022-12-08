@@ -1,4 +1,5 @@
-import { combineReducers, createStore } from "redux";
+import { applyMiddleware, combineReducers, createStore } from "redux";
+import thunk from "redux-thunk";
 import profileReducer from './profile-reducer';
 import messangerReducer from './messanger-reducer';
 import findFriendsReducer from "./find-friends-reducer";
@@ -12,6 +13,6 @@ let reducers = combineReducers({
     findFriends: findFriendsReducer,
 }) 
 
-let store = createStore(reducers);
+let store = createStore(reducers, applyMiddleware(thunk));
 
 export default store;

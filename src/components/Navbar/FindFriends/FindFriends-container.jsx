@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from "react-redux";
-import {follow, unFollow, setUsers, setPage, preloader, toggleDisabled} from "../../redux/find-friends-reducer";
+import {follow, unFollow, setUsers, setPage, preloader, toggleDisabled, usersUnfollow, usersFollow} from "../../redux/find-friends-reducer";
 import FindFriendsC from './FindFriendsC';
 import Preloader from './Preloader';
 import { getPage, getCurrentPage } from '../../../api/api';
@@ -45,11 +45,13 @@ class FindFriendsApi extends React.Component {
                         currentPage={this.props.currentPage}
                         clickPage={this.clickPage}
                         users={this.props.users}
-                        unFollow={this.props.unFollow} 
-                        follow={this.props.follow}
+                        // unFollow={this.props.unFollow} 
+                        // follow={this.props.follow}
                         preloader={this.props.isPreloader}
                         followedInProgress={this.props.followedInProgress}
-                        toggleDisabled={this.props.toggleDisabled}/>}
+                        // toggleDisabled={this.props.toggleDisabled}
+                        usersUnfollow={this.props.usersUnfollow}
+                        usersFollow={this.props.usersFollow}/>}
             
               </>          
         )               
@@ -74,11 +76,13 @@ let mapStateToProps = (store) => {
 
 
 export default connect(mapStateToProps, {
-    follow: follow,
-    unFollow: unFollow,
+    // follow: follow,
+    // unFollow: unFollow,
     setUsers: setUsers,
     setPage: setPage,
     preloader: preloader,
-    toggleDisabled: toggleDisabled,
+    // toggleDisabled: toggleDisabled,
+    usersUnfollow: usersUnfollow,
+    usersFollow: usersFollow,
 
 })(FindFriendsApi);
