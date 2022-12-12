@@ -2,7 +2,6 @@ import React from 'react';
 import classes from './ProfileInfo.module.css';
 
 const ProfileInfo = (props) =>{
-    console.log(props)
     return (
         <div className={classes.profileInfo}>
             <div className={classes.avatar}>
