@@ -3,6 +3,7 @@ import classes from './Messanger.module.css';
 import DialogItem from './DialogItem/DialogItem';
 import MessageUser  from './Message/MessageUser';
 import MessageFriend from './Message/MessageFriend';
+import { Redirect } from 'react-router-dom';
 
 
 
@@ -25,6 +26,10 @@ const Messanger = (props) =>{
         let text = textAreaRef.current.value;
         props.createUpdateNewMessageText(text);
 
+    }
+
+    if(props.resultCode == 1){
+        return <Redirect to={'/login'} />
     }
 
     return (

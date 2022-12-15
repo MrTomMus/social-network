@@ -1,10 +1,10 @@
 import { connect } from "react-redux";
 import Profile from './Profile';
-import { createAddPost, createUpdateNewPostText, preloader, setProfilesAc } from '../redux/profile-reducer'
+import { createAddPost, createUpdateNewPostText, getUsersThunk, setProfilesAc,  } from '../redux/profile-reducer'
 import React from 'react';
-import axios from 'axios';
 import { withRouter } from "react-router-dom";
 import Preloader from "../Navbar/FindFriends/Preloader";
+import { getUsers } from "../../api/api";
 
 
 
@@ -17,18 +17,13 @@ class ProfileApi extends React.Component {
     }
     
     componentDidMount(){
-        
+        console.log(this.props)
         let userId = this.props.match.params.userId
 
         if(!userId){
             userId = 2
         }
-        this.props.preloaderAC(false);
-        
-        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/`+userId).then(response => {
-            this.props.setProfilesAc(response.data)
-            this.props.preloaderAC(true);   
-        })
+       this.props.getUsersThunk(userId)
     }
 
     render() {
@@ -56,8 +51,11 @@ let mapDispatchToProps = (dispatch) => {
         setProfilesAc: (item) => {
             dispatch(setProfilesAc(item))
         },
-        preloaderAC: (bool) => {
-            dispatch(preloader(bool))
+        // preloaderAC: (bool) => {
+        //     dispatch(preloader(bool))
+        // },
+        getUsersThunk: (userId) => {
+            dispatch(getUsersThunk(userId))
         }
     }     
 }

@@ -1,3 +1,5 @@
+import { getUsers } from "../../api/api";
+
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 const SET_PROFILES = 'SET-PROFILES';
@@ -74,9 +76,20 @@ export let setProfilesAc = (item) => {
 }
 
 export let preloader = (isPreloading) => {
-    
     return {
         type: TOGGLE_PRELOADER, isPreloading
+    }
+}
+
+export const getUsersThunk = (userId) => {
+   
+    return (dispatch) => {
+        dispatch(preloader(false));
+        console.log('Thunk')
+        getUsers(userId).then(response => {
+            dispatch(setProfilesAc(response.data));
+            dispatch(preloader(true));   
+        })
     }
 }
 

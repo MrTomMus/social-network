@@ -12,6 +12,7 @@ import FindFriendsContainer from './components/Navbar/FindFriends/FindFriends-co
 import HeaderContainer from './components/Header/Header-container';
 import AuthMeContainer from './components/Header/AuthComponent/AuthMe-container';
 import LogoutContainer from './components/Header/AuthComponent/Logout-container';
+import Login from './components/Login/Login';
 
 
 const App = (props) => {
@@ -38,6 +39,7 @@ const App = (props) => {
                   <Route path='/settings' component={Settings}/>
                   <Route path='/friends' render={() => <FriendsContainer/>}/>
                   <Route path='/find-friends' render={() => <FindFriendsContainer/>}/>
+                  <Route path='/login' render={() => <Login/>}/>
               </div>
             </div>
             

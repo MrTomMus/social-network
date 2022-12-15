@@ -5,6 +5,7 @@ import { createAddMessage, createUpdateNewMessageText } from '../redux/messanger
 let mapStateToProps = (state) => {
     return {
         messangerPage: state.messangerPage,
+        resultCode: state.header.resultCode
     }
 }
 
