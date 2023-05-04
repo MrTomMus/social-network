@@ -4,6 +4,7 @@ import {follow, unFollow, setUsers, setPage, preloader, toggleDisabled, usersUnf
 import FindFriendsC from './FindFriendsC';
 import Preloader from './Preloader';
 import { getPage, getCurrentPage } from '../../../api/api';
+import { WithAuthRedirect } from '../../../hok/withAuthRedirect';
 
 
 
@@ -73,7 +74,7 @@ let mapStateToProps = (store) => {
 
 
 
-
+let AuthRedirectComponent = WithAuthRedirect(FindFriendsApi)
 
 export default connect(mapStateToProps, {
     // follow: follow,
@@ -85,4 +86,4 @@ export default connect(mapStateToProps, {
     usersUnfollow: usersUnfollow,
     usersFollow: usersFollow,
 
-})(FindFriendsApi);
+})(AuthRedirectComponent);

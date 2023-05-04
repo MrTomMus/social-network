@@ -24,9 +24,6 @@ const Profile = (props) => {
     
     return (
         <div className={classes.profile}>
-            <div className={classes.profileLogo}>
-                <img src='https://klike.net/uploads/posts/2019-11/1574605232_1.jpg'></img>
-            </div> 
             <div>
                 <ProfileInfo {...props} />
             </div>

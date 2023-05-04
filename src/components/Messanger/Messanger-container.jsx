@@ -1,11 +1,13 @@
 import { connect } from "react-redux";
 import Messanger from "./Messanger";
 import { createAddMessage, createUpdateNewMessageText } from '../redux/messanger-reducer'
+import { Redirect } from 'react-router-dom';
+import { WithAuthRedirect } from "../../hok/withAuthRedirect";
+import { compose } from "redux";
 
 let mapStateToProps = (state) => {
     return {
         messangerPage: state.messangerPage,
-        resultCode: state.header.resultCode
     }
 }
 
@@ -22,6 +24,7 @@ let mapDispatchToProps = (dispatch) => {
 }
 
 
-const MessangerContainer = connect(mapStateToProps, mapDispatchToProps)(Messanger);
-
-export default MessangerContainer;
+export default compose(
+    connect(mapStateToProps, mapDispatchToProps),
+    WithAuthRedirect
+)(Messanger);

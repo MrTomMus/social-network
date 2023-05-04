@@ -1,5 +1,6 @@
 import React from 'react';
 import classes from './ProfileInfo.module.css';
+import ProfileStatus from './profileStatus/ProfileStatus';
 
 const ProfileInfo = (props) =>{
     return (
@@ -9,6 +10,9 @@ const ProfileInfo = (props) =>{
             </div>
             <div className={classes.profileName}>
                 <span>{props.profilePage.profiles.fullName}</span>
+            </div>
+            <div className={classes.status}>
+                <ProfileStatus/>
             </div>
             <div className={classes.discription}>
                  <span>Обо мне: {props.profilePage.profiles.aboutMe}</span>

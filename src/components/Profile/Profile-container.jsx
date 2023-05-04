@@ -5,6 +5,8 @@ import React from 'react';
 import { withRouter } from "react-router-dom";
 import Preloader from "../Navbar/FindFriends/Preloader";
 import { getUsers } from "../../api/api";
+import { WithAuthRedirect } from "../../hok/withAuthRedirect";
+import { compose } from "redux";
 
 
 
@@ -60,6 +62,9 @@ let mapDispatchToProps = (dispatch) => {
     }     
 }
 
-let withRouterProfileApi = withRouter(ProfileApi)
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouterProfileApi);
+export default compose(
+    connect(mapStateToProps, mapDispatchToProps),
+    withRouter,
+    WithAuthRedirect
+)(ProfileApi)
